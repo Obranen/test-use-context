@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {createContext, FC} from 'react'
+import Test from './components/Test';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface IContext {
+  name: string
+  id: number
 }
 
-export default App;
+export const Context = createContext({} as IContext)
+
+const App: FC = () => {
+  return (
+    <Context.Provider value={{
+      name: 'Dima',
+      id: 5
+    }}>
+      <Test/>
+    </Context.Provider>
+  )
+}
+
+export default App
